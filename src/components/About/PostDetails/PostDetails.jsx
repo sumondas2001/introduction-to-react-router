@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 
 const PostDetails = () => {
@@ -13,7 +13,11 @@ const PostDetails = () => {
      }
 
      const postDetails = useLoaderData()
-     console.log(postDetails)
+     // console.log(postDetails)
+     const navigate = useNavigate();
+     const handelGoBack = () => {
+          navigate(-1)
+     }
      const { userId, title, body } = postDetails;
      return (
           <div style={postDetailsCss}>
@@ -22,6 +26,7 @@ const PostDetails = () => {
                <h5>User Id: {userId}</h5>
                <h3>{title}</h3>
                <p>{body}</p>
+               <button onClick={handelGoBack}>Go Back</button>
           </div>
      );
 };
